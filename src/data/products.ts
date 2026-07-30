@@ -126,7 +126,7 @@ export const categories: Category[] = [
     name: 'Indian Bakery Range',
     shortName: 'Indian Range',
     description:
-      'Authentic Indian-style bakery products — paav, kulcha and soft white bread — produced fresh daily for Indian restaurants, caterers and grocers.',
+      'Authentic Indian-style bakery products — paav, kulcha, street-food buns and soft white bread — produced fresh daily for Indian restaurants, caterers and grocers.',
     image: IMG.bunsRolls,
     accent: 'spice',
   },
@@ -713,6 +713,56 @@ export const products: Product[] = [
       'A generous 800g soft white loaf with a fine, even crumb — the everyday bread for Indian grocery shelves, sandwich preparation, bread pakora and high-volume catering kitchens.',
     applications: 'Grocery Stores · Indian Restaurants · Catering · Sandwich Prep',
     featured: true,
+  },
+  {
+    slug: 'patti-pav',
+    category: 'indian',
+    name: 'Patti Pav',
+    weight: 'Confirmed on quote',
+    pack: 'Supplied as a joined slab · Pack size confirmed on quote',
+    description:
+      'Pav baked as a single joined slab, so the sides stay pale and soft and each bun tears away cleanly at the seam. The format most Indian kitchens want when pav is going out by the tray rather than the piece.',
+    applications: 'Indian Restaurants · Street Food Menus · Caterers · Grocers',
+  },
+  {
+    slug: 'pav-bhaji-bun',
+    category: 'indian',
+    name: 'Pav Bhaji Bun',
+    weight: 'Confirmed on quote',
+    pack: 'Supplied in joined trays · Pack size confirmed on quote',
+    description:
+      'A soft, open-crumbed bun built for the griddle — it takes butter without going greasy and holds together through a hard toast, ready to mop up bhaji straight off the plate.',
+    applications: 'Indian Restaurants · Pav Bhaji Service · Food Trucks · Events',
+  },
+  {
+    slug: 'bharwa-kulcha',
+    category: 'indian',
+    name: 'Bharwa Kulcha',
+    weight: 'Confirmed on quote',
+    pack: 'Packed for food service · Bulk cartons available',
+    description:
+      'Our stuffed kulcha, filled and sealed in the bakery so your kitchen only has to finish it on the griddle or in the tandoor. Filling and portion size are set with you when we quote.',
+    applications: 'Indian Restaurants · Catering · Grocery Retail',
+  },
+  {
+    slug: 'maska-bun',
+    category: 'indian',
+    name: 'Maska Bun',
+    weight: 'Confirmed on quote',
+    pack: 'Packed for food service · Bulk cartons available',
+    description:
+      'The soft, lightly sweet bun of the Irani café counter — a tender crumb and a glazed top, made to be split, buttered generously and served alongside chai.',
+    applications: 'Cafés · Indian Restaurants · Chai Houses · Grocery Retail',
+  },
+  {
+    slug: 'dabeli-bun',
+    category: 'indian',
+    name: 'Dabeli Bun',
+    weight: 'Confirmed on quote',
+    pack: 'Supplied in joined trays · Pack size confirmed on quote',
+    description:
+      'Sized and structured for Kutchi dabeli — soft enough to press flat, sturdy enough to carry a wet filling with sev and pomegranate without falling apart in service.',
+    applications: 'Indian Restaurants · Street Food Menus · Caterers · Grocers',
   },
 ];
 

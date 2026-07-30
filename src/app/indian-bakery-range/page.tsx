@@ -84,10 +84,10 @@ export default function IndianRangePage() {
               <span className="text-saffron">Baked Fresh Daily.</span>
             </h1>
             <p className="mt-7 max-w-xl text-[1.05rem] leading-relaxed text-white/75">
-              Soft paav, layered kulcha and generous white loaves — produced every
-              morning at our Springvale bakery and supplied wholesale to Indian
-              restaurants, caterers, grocery stores and hospitality venues across
-              Melbourne.
+              Soft paav, layered kulcha, street-food buns and generous white loaves
+              — produced every morning at our Springvale bakery and supplied
+              wholesale to Indian restaurants, caterers, grocery stores and
+              hospitality venues across Melbourne.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link href="#enquiry" className="btn btn-primary btn-lg">
