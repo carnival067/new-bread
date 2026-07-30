@@ -30,12 +30,15 @@ export function SiteHeader() {
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href);
 
-  // The header is transparent until you scroll. Only the home page has a dark
-  // (espresso) hero behind it, so that is the one case where the bar needs
-  // light type — everywhere else it sits on cream and stays dark. While the
-  // mobile menu is open the bar sits on the cream panel, so it goes solid too.
+  // The header is transparent until you scroll, and every page opens on a dark
+  // hero — espresso via PageHero (and the home page and 404), spice-dark on the
+  // Indian range. So while it is transparent the bar always needs light type.
+  // Once solid it sits on cream and switches back to dark type; the mobile menu
+  // forces the solid state because the bar then sits on the cream menu panel.
+  //
+  // NB: a new page whose first section is light would need this reconsidered.
   const solid = scrolled || open;
-  const onDark = isActive('/') && !solid;
+  const onDark = !solid;
 
   return (
     <>
