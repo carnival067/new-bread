@@ -1,0 +1,316 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   BREAD CO — DESIGN SYSTEM
+   Palette : Cream / Espresso / Gold  (carried over from BreadCo-v2)
+   Accent  : Terracotta / Saffron     (Indian Bakery Range only)
+   Type    : Playfair Display (display) + Manrope (body)
+   ========================================================================== */
+
+@theme {
+  /* ── Core brand palette ─────────────────────────────────────── */
+  --color-cream: #f7f3ee;
+  --color-cream-dark: #ede7dc;
+  --color-flour: #fdfaf6;
+  --color-warmwhite: #fffdf9;
+
+  --color-espresso: #2c1f14;
+  --color-charcoal: #1e1a16;
+  --color-ink: #3a2e24;
+  --color-muted: #7a6555;
+  --color-faint: #a89080;
+
+  --color-gold: #c49a3c;
+  --color-gold-light: #ddb96a;
+  --color-gold-pale: #f0e2c0;
+  --color-caramel: #a0703a;
+
+  --color-line: rgba(58, 46, 36, 0.1);
+  --color-line-gold: rgba(196, 154, 60, 0.22);
+
+  /* ── Indian Bakery Range accent ─────────────────────────────── */
+  --color-spice: #b04a1e;
+  --color-spice-dark: #7d3213;
+  --color-spice-light: #d4703c;
+  --color-saffron: #e0a02d;
+  --color-spice-pale: #f8efe4;
+
+  /* ── Type ───────────────────────────────────────────────────── */
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Motion ─────────────────────────────────────────────────── */
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Base ─────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-espresso);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-gold-pale);
+    color: var(--color-espresso);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+/* ── Reusable component classes ───────────────────────────────── */
+@layer components {
+  .container-brand {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-brand {
+      padding-inline: 2rem;
+    }
+  }
+
+  .section {
+    padding-block: 4.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section {
+      padding-block: 6.5rem;
+    }
+  }
+
+  /* Small uppercase label above headings */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-caramel);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: var(--color-gold);
+  }
+
+  .eyebrow-center::before {
+    display: none;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    text-align: center;
+    transition:
+      background-color 0.25s var(--ease-brand),
+      color 0.25s var(--ease-brand),
+      border-color 0.25s var(--ease-brand),
+      transform 0.25s var(--ease-brand),
+      box-shadow 0.25s var(--ease-brand);
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .btn-primary {
+    background: var(--color-gold);
+    color: var(--color-espresso);
+    box-shadow: 0 1px 2px rgba(44, 31, 20, 0.12);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-gold-light);
+    box-shadow: 0 6px 18px rgba(196, 154, 60, 0.32);
+  }
+
+  .btn-dark {
+    background: var(--color-espresso);
+    color: var(--color-cream);
+  }
+
+  .btn-dark:hover {
+    background: var(--color-charcoal);
+    box-shadow: 0 6px 18px rgba(44, 31, 20, 0.24);
+  }
+
+  .btn-outline {
+    border: 1px solid var(--color-line-gold);
+    color: var(--color-espresso);
+    background: transparent;
+  }
+
+  .btn-outline:hover {
+    background: var(--color-gold-pale);
+    border-color: var(--color-gold);
+  }
+
+  .btn-outline-light {
+    border: 1px solid rgba(247, 243, 238, 0.35);
+    color: var(--color-cream);
+    background: transparent;
+  }
+
+  .btn-outline-light:hover {
+    background: rgba(247, 243, 238, 0.12);
+    border-color: rgba(247, 243, 238, 0.7);
+  }
+
+  .btn-spice {
+    background: var(--color-spice);
+    color: #fff;
+  }
+
+  .btn-spice:hover {
+    background: var(--color-spice-dark);
+    box-shadow: 0 6px 18px rgba(176, 74, 30, 0.3);
+  }
+
+  .btn-lg {
+    padding: 1.05rem 2rem;
+    font-size: 0.95rem;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--color-flour);
+    border: 1px solid var(--color-line);
+    border-radius: 14px;
+  }
+
+  /* Form fields */
+  .field-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 0.45rem;
+  }
+
+  .field {
+    width: 100%;
+    background: var(--color-warmwhite);
+    border: 1px solid var(--color-line);
+    border-radius: 7px;
+    padding: 0.75rem 0.9rem;
+    font-size: 0.95rem;
+    color: var(--color-ink);
+    transition:
+      border-color 0.2s var(--ease-brand),
+      box-shadow 0.2s var(--ease-brand);
+  }
+
+  .field::placeholder {
+    color: var(--color-faint);
+  }
+
+  .field:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(196, 154, 60, 0.16);
+  }
+
+  /* Decorative rule used under section intros */
+  .rule-gold {
+    width: 3rem;
+    height: 2px;
+    background: var(--color-gold);
+    border-radius: 2px;
+  }
+}
+
+/* ── Utilities ────────────────────────────────────────────────── */
+@utility grain {
+  /* Subtle paper texture — pure CSS, no extra network request */
+  background-image: radial-gradient(
+    rgba(44, 31, 20, 0.035) 0.5px,
+    transparent 0.5px
+  );
+  background-size: 4px 4px;
+}
+
+/* Entrance animation, respectful of reduced-motion preferences */
+@keyframes brand-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-rise {
+  animation: brand-rise 0.7s var(--ease-brand) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,24 @@
+# Deploy to Render as a Node web service.
+# (The old site was a Render *static site* — Next.js needs a web service so
+#  the enquiry API route and image optimisation can run.)
+#
+# Render → New → Web Service → connect this repo → it reads this file.
+# Then add WEB3FORMS_ACCESS_KEY under the service's Environment settings.
+
+services:
+  - type: web
+    name: breadco-website
+    runtime: node
+    plan: starter
+    region: singapore
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://breadco.com.au
+      - key: WEB3FORMS_ACCESS_KEY
+        sync: false # set this in the Render dashboard, never in the repo
