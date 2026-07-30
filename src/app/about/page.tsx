@@ -8,7 +8,7 @@ import { JsonLd, breadcrumbSchema, pageMeta } from '@/lib/seo';
 export const metadata: Metadata = pageMeta({
   title: 'About Bread Co | Wholesale Bakery in Springvale, Melbourne',
   description:
-    'Bread Co is a family-owned wholesale bakery in Springvale, Victoria. Led by a qualified baker with over 30 years’ experience, we supply Melbourne’s cafés, restaurants, caterers and hospitality groups with artisan and Indian bakery products baked fresh daily.',
+    'Bread Co is a family-owned wholesale bakery in Springvale, Victoria. Led by experienced, qualified bakers, we supply Melbourne’s cafés, restaurants, caterers and hospitality groups with artisan and Indian bakery products baked fresh daily.',
   path: '/about',
   keywords: [
     'wholesale bakery Melbourne',
@@ -58,7 +58,7 @@ export default function AboutPage() {
               eyebrow="Bread Co"
               title={
                 <>
-                  Thirty years of craft,
+                  Real craft,
                   <br />
                   <Em>in every delivery.</Em>
                 </>
@@ -67,9 +67,8 @@ export default function AboutPage() {
             <div className="mt-7 space-y-5 text-[1rem] leading-relaxed text-muted">
               <p>
                 Bread Co began the way most good bakeries do — with one qualified
-                baker who refused to compromise. Our director has spent more than
-                thirty years in the trade, and that experience is now trained into
-                every person who works our production floor.
+                baker who refused to compromise. That same standard is now trained
+                into every person who works our production floor.
               </p>
               <p>
                 We are a family-owned business, and it shows in how we operate. Our

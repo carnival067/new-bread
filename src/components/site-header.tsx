@@ -30,6 +30,13 @@ export function SiteHeader() {
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href);
 
+  // The header is transparent until you scroll. Only the home page has a dark
+  // (espresso) hero behind it, so that is the one case where the bar needs
+  // light type — everywhere else it sits on cream and stays dark. While the
+  // mobile menu is open the bar sits on the cream panel, so it goes solid too.
+  const solid = scrolled || open;
+  const onDark = isActive('/') && !solid;
+
   return (
     <>
       <a
@@ -41,7 +48,7 @@ export function SiteHeader() {
 
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-          scrolled
+          solid
             ? 'border-b border-line bg-cream/95 backdrop-blur-md shadow-[0_1px_20px_rgba(44,31,20,0.06)]'
             : 'border-b border-transparent bg-transparent'
         }`}
@@ -73,17 +80,31 @@ export function SiteHeader() {
         </div>
 
         <nav
-          className={`container-brand flex items-center justify-between transition-all duration-300 ${
-            scrolled ? 'h-16' : 'h-18'
+          className={`container-brand flex items-center justify-between gap-4 transition-all duration-300 ${
+            solid ? 'h-16' : 'h-18'
           }`}
           aria-label="Main navigation"
         >
+          {/* Wordmark lockup */}
           <Link
             href="/"
-            className="flex items-baseline gap-1 font-display text-2xl tracking-tight text-espresso"
+            className="group flex shrink-0 flex-col leading-none"
             aria-label="Bread Co — home"
           >
-            Bread<span className="text-gold">Co</span>
+            <span
+              className={`font-display text-[1.45rem] tracking-tight transition-colors sm:text-[1.6rem] ${
+                onDark ? 'text-cream' : 'text-espresso'
+              }`}
+            >
+              Bread<span className="text-gold">&nbsp;Co.</span>
+            </span>
+            <span
+              className={`mt-[0.3rem] text-[0.5rem] font-semibold uppercase tracking-[0.26em] transition-colors sm:text-[0.55rem] ${
+                onDark ? 'text-cream/55' : 'text-muted'
+              }`}
+            >
+              Australian Made &amp; Owned
+            </span>
           </Link>
 
           <ul className="hidden items-center gap-1 lg:flex">
@@ -93,9 +114,13 @@ export function SiteHeader() {
                   href={link.href}
                   aria-current={isActive(link.href) ? 'page' : undefined}
                   className={`relative rounded px-3.5 py-2 text-[0.88rem] font-medium transition-colors ${
-                    isActive(link.href)
-                      ? 'text-espresso'
-                      : 'text-muted hover:text-espresso'
+                    onDark
+                      ? isActive(link.href)
+                        ? 'text-cream'
+                        : 'text-cream/70 hover:text-cream'
+                      : isActive(link.href)
+                        ? 'text-espresso'
+                        : 'text-muted hover:text-espresso'
                   }`}
                 >
                   {link.label}
@@ -108,13 +133,31 @@ export function SiteHeader() {
           </ul>
 
           <div className="flex items-center gap-2">
+            {/* Tap-to-call — the fastest path for a chef on a phone */}
+            <a
+              href={site.phoneHref}
+              aria-label={`Call ${site.phone}`}
+              className={`inline-flex h-11 w-11 items-center justify-center rounded border transition-colors lg:hidden ${
+                onDark
+                  ? 'border-cream/25 text-cream hover:bg-cream/10'
+                  : 'border-line text-espresso hover:bg-espresso/5'
+              }`}
+            >
+              <Icon name="phone" className="h-[1.05rem] w-[1.05rem]" />
+            </a>
+
             <Link href="/wholesale" className="btn btn-primary hidden md:inline-flex">
               Request Pricing
             </Link>
+
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded border border-line text-espresso lg:hidden"
+              className={`inline-flex h-11 w-11 items-center justify-center rounded border transition-colors lg:hidden ${
+                onDark
+                  ? 'border-cream/25 text-cream hover:bg-cream/10'
+                  : 'border-line text-espresso hover:bg-espresso/5'
+              }`}
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? 'Close menu' : 'Open menu'}
@@ -129,22 +172,29 @@ export function SiteHeader() {
       <div
         id="mobile-nav"
         hidden={!open}
-        className="fixed inset-0 z-40 bg-cream px-6 pt-28 pb-10 lg:hidden"
+        className="fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-cream px-6 pt-24 pb-[calc(2.5rem+env(safe-area-inset-bottom))] lg:hidden"
       >
-        <ul className="space-y-1">
+        <ul>
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`block border-b border-line py-4 font-display text-2xl ${
+                aria-current={isActive(link.href) ? 'page' : undefined}
+                className={`flex min-h-14 items-center justify-between border-b border-line py-3.5 font-display text-2xl ${
                   isActive(link.href) ? 'text-gold' : 'text-espresso'
                 }`}
               >
                 {link.label}
+                <Icon
+                  name="arrowRight"
+                  className="h-4 w-4 text-faint"
+                  strokeWidth={1.8}
+                />
               </Link>
             </li>
           ))}
         </ul>
+
         <div className="mt-8 space-y-3">
           <Link href="/wholesale" className="btn btn-primary btn-lg w-full">
             Request Wholesale Pricing
@@ -153,7 +203,19 @@ export function SiteHeader() {
             <Icon name="phone" className="h-4 w-4" />
             {site.phone}
           </a>
+          <a
+            href={`mailto:${site.email}`}
+            className="btn btn-outline btn-lg w-full"
+          >
+            <Icon name="mail" className="h-4 w-4" />
+            Email us
+          </a>
         </div>
+
+        <p className="mt-8 text-center text-[0.8rem] leading-relaxed text-muted">
+          Wholesale bakery supplying cafés, restaurants &amp; caterers across
+          Melbourne &amp; country Victoria
+        </p>
       </div>
     </>
   );

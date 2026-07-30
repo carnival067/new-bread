@@ -84,7 +84,7 @@ export default function HomePage() {
             <ul className="mt-10 flex flex-wrap gap-2.5">
               {[
                 'Family owned',
-                '30+ years experience',
+                'Experienced bakers',
                 'Baked fresh daily',
                 'Melbourne & country VIC',
               ].map((pill) => (

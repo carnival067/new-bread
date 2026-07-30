@@ -60,7 +60,7 @@ export const navLinks = [
 
 /* ── Trust bar / headline numbers ──────────────────────────────── */
 export const stats = [
-  { value: '30+', label: 'Years of baking experience' },
+  { value: 'Family', label: 'Owned and operated' },
   { value: '60+', label: 'Wholesale product lines' },
   { value: '7', label: 'Days a week production' },
   { value: '6am', label: 'Deliveries on your bench by' },
@@ -186,7 +186,7 @@ export const qualityPillars = [
   },
   {
     title: 'Made by qualified bakers',
-    body: 'Our director is a qualified baker with more than 30 years in the trade, and that standard is trained into every person on the production floor.',
+    body: 'Our bread is made by experienced, qualified bakers, and that standard is trained into every person on the production floor.',
   },
   {
     title: 'Specification you can rely on',
