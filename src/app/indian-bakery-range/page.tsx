@@ -119,7 +119,10 @@ export default function IndianRangePage() {
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-saffron/25 shadow-[0_30px_70px_rgba(0,0,0,0.4)]">
             <Image
               src={imagery.indian}
-              alt="Soft Indian paav rolls freshly baked at Bread Co's Melbourne bakery"
+              // PLACEHOLDER IMAGE — not Bread Co's own Indian range. Alt text is
+              // kept accurate to what the photo actually shows until we have
+              // real paav/kulcha photography to swap in.
+              alt="Freshly baked bread — indicative of the Indian bakery range supplied by Bread Co"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 45vw"
