@@ -47,21 +47,24 @@ export interface Product {
   image?: string;
 }
 
-/* Shared photography. Replace these with your own bakery photography by
-   dropping files into /public/images and swapping the paths below. */
+/* Shared photography. Anything under /images/products is real Bread Co
+   photography shot at the Springvale bakery. The remaining Unsplash URLs are
+   placeholders — replace them as more of our own photography comes in. */
 const IMG = {
-  sourdough:
-    'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1400&q=80',
+  sourdough: '/images/products/sourdough-range.jpg',
+  catering: '/images/products/white-sourdough-cater.jpg',
+  bunsRolls: '/images/products/brioche-bun.jpg',
+  sweets: '/images/products/cinnamon-donut.jpg',
+  // TODO: no Bread Co photography of these two ranges yet — a sourdough photo
+  // here would misrepresent them, so they stay on placeholders for now.
   traditional:
     'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=1400&q=80',
-  catering:
-    'https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?auto=format&fit=crop&w=1400&q=80',
   nonSourdough:
     'https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=1400&q=80',
-  bunsRolls:
-    'https://images.unsplash.com/photo-1612198790700-0ff08cb726e5?auto=format&fit=crop&w=1400&q=80',
-  sweets:
-    'https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1400&q=80',
+  // TODO: no Bread Co photography of the Indian range yet (paav, kulcha,
+  // dabeli/maska buns). Placeholder until those photos are shot.
+  indian:
+    'https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=1400&q=80',
 } as const;
 
 export const imagery = {
@@ -69,7 +72,7 @@ export const imagery = {
   story: IMG.traditional,
   delivery: IMG.catering,
   quality: IMG.nonSourdough,
-  indian: IMG.bunsRolls,
+  indian: IMG.indian,
 };
 
 export const categories: Category[] = [
@@ -127,7 +130,7 @@ export const categories: Category[] = [
     shortName: 'Indian Range',
     description:
       'Authentic Indian-style bakery products — paav, kulcha, street-food buns and soft white bread — produced fresh daily for Indian restaurants, caterers and grocers.',
-    image: IMG.bunsRolls,
+    image: IMG.indian,
     accent: 'spice',
   },
 ];
@@ -138,6 +141,7 @@ export const products: Product[] = [
     category: 'sourdough',
     name: 'White Sourdough Loaf',
     weight: '650g',
+    image: '/images/products/white-sourdough-650.jpg',
     pack: 'Per loaf · Sliced or unsliced on request · Bulk trays available',
     description: 'A classic artisan sourdough with a golden crust, soft open crumb, and balanced tang. Ideal for cafés, restaurants, sandwiches, toast service, and breakfast menus.',
     applications: 'Cafés · Restaurants · Toast Service',
@@ -148,6 +152,7 @@ export const products: Product[] = [
     category: 'sourdough',
     name: 'White Sourdough COB',
     weight: '680g',
+    image: '/images/products/white-sourdough-cob.jpg',
     pack: 'Per loaf · Sliced or unsliced on request · Bulk trays available',
     description: 'A round cob-style sourdough with a thick, blistered crust and chewy interior. Perfect for sharing boards, dipping, and artisan bread service.',
     applications: 'Restaurants · Sharing Boards · Events',
@@ -157,6 +162,7 @@ export const products: Product[] = [
     category: 'sourdough',
     name: 'White Sourdough Loaf',
     weight: '1300g',
+    image: '/images/products/white-sourdough-1300.jpg',
     pack: 'Per loaf · Sliced or unsliced on request · Bulk trays available',
     description: 'Our signature white sourdough in a large format — perfect for high-volume slicing, catering trays, and busy café kitchens.',
     applications: 'High-Volume Cafés · Catering · Hotels',
@@ -214,6 +220,7 @@ export const products: Product[] = [
     category: 'sourdough',
     name: 'Dark Rye Sourdough Loaf',
     weight: '650g',
+    image: '/images/products/dark-rye-sourdough-650.jpg',
     pack: 'Per loaf · Sliced or unsliced on request · Bulk trays available',
     description: 'A deeply flavoured dark rye with robust character. A staple of European-style bakeries and premium delis.',
     applications: 'Delis · European Menus · Smoked Salmon Service',
@@ -241,6 +248,7 @@ export const products: Product[] = [
     category: 'sourdough',
     name: 'Olive Sourdough Loaf',
     weight: '650g',
+    image: '/images/products/olive-sourdough-650.jpg',
     pack: 'Per loaf · Sliced or unsliced on request · Bulk trays available',
     description: 'Mediterranean-inspired sourdough laced with whole olives. A natural match for antipasto spreads, tapas, and wine menus.',
     applications: 'Restaurants · Wine Bars · Events',
@@ -287,6 +295,7 @@ export const products: Product[] = [
     category: 'sourdough',
     name: 'Artisan Italian Ciabatta',
     weight: '650g',
+    image: '/images/products/ciabatta-650.jpg',
     pack: 'Per loaf · Sliced or unsliced on request · Bulk trays available',
     description: 'Rustic Italian-style ciabatta with a crisp golden crust and airy, holey interior. Excellent for paninis, sandwiches, and dipping.',
     applications: 'Cafés · Restaurants · Panini Service',
@@ -353,6 +362,7 @@ export const products: Product[] = [
     category: 'catering',
     name: 'White Catering Tin',
     weight: '1.4kg',
+    image: '/images/products/white-sourdough-cater.jpg',
     pack: 'Per tin · Sliced to your thickness on request',
     description: 'A large white tin loaf purpose-built for high-volume slicing, catering trays, sandwiches, and institutional food service.',
     applications: 'Caterers · Schools · Hotels · Institutions',
@@ -482,6 +492,7 @@ export const products: Product[] = [
     category: 'buns-rolls',
     name: 'Brioche Bun',
     weight: '90g',
+    image: '/images/products/brioche-bun.jpg',
     pack: 'Supplied in bulk trays · Pack size confirmed on quote',
     description: 'Our full-size brioche bun — soft, pillowy, and beautifully golden. The premium choice for restaurant burgers and café fare.',
     applications: 'Restaurants · Cafés · Premium Burger Service',
@@ -591,6 +602,7 @@ export const products: Product[] = [
     category: 'buns-rolls',
     name: 'Hot Dog Rolls',
     weight: '100g',
+    image: '/images/products/hot-dog-rolls.jpg',
     pack: 'Supplied in bulk trays · Pack size confirmed on quote',
     description: 'Individual hot dog rolls — soft and even, ready for kiosks, canteens, and event food service.',
     applications: 'Sports Clubs · Kiosks · Schools',
@@ -618,6 +630,7 @@ export const products: Product[] = [
     category: 'buns-rolls',
     name: 'Ciabatta Rolls',
     weight: '140g',
+    image: '/images/products/ciabatta-rolls.jpg',
     pack: 'Supplied in bulk trays · Pack size confirmed on quote',
     description: 'Individual ciabatta rolls with a crisp crust and open crumb. A premium choice for gourmet sandwiches and restaurant service.',
     applications: 'Cafés · Restaurants · Sandwich Bars',
@@ -636,6 +649,7 @@ export const products: Product[] = [
     category: 'sweets',
     name: 'Italian Donuts Large',
     weight: '120g',
+    image: '/images/products/cinnamon-donut.jpg',
     pack: 'Supplied in bulk trays · Pack size confirmed on quote',
     description: 'Classic Italian-style donuts with a light, airy bite and rich golden exterior. Great for cafés, events, and catering.',
     applications: 'Cafés · Events · Sports Clubs',
